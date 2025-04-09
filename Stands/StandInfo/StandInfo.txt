@@ -1,1 +1,0 @@
-Archivo para guardar toda la información de Stands para la web.
