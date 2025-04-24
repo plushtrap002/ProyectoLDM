@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+}
+
+body::before {
+    content: "★";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('Fondo.jpg');
+    filter: blur(0px); /* Ajusta el nivel de difuminado */
+    background-size: cover;
+}
