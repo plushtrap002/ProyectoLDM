@@ -1,13 +1,61 @@
 body {
     margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* Organiza el menú arriba y el contenido abajo */
+    position: relative; /* Necesario para el pseudo-elemento ::before */
 }
 
+/* Fondo difuminado */
 body::before {
-    content: "★";
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
     background-image: url('Fondo.jpg');
-    filter: blur(0px); /* Ajusta el nivel de difuminado */
+    filter: blur(2px);
     background-size: cover;
+    z-index: -1; /* Manda el fondo detrás de todo */
+}
+
+/* Menú (sin cambios) */
+.navMenu {
+    background-color: purple;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+.navMenu ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+.navMenu li {
+    padding: 10px 50px;
+}
+.navMenu a {
+    color: cyan;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+}
+.navMenu a:hover {
+    color: darkcyan;
+}
+
+/* Contenido centrado */
+.contenido {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    text-align: center;
+    padding: 30px;
+    background: rgba(255,255,255,0.50);
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    position: relative; /* Asegura que esté sobre el fondo */
 }
