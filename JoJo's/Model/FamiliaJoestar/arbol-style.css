@@ -12,12 +12,11 @@ body::before {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url('Fondo.jpg');
-    filter: blur(2px);
+    background-image: url('../Fondo.jpg');
+    filter: blur(1px);
     background-size: cover;
     z-index: -1; /* Manda el fondo detrás de todo */
 }
-
 /* Menú (sin cambios) */
 .navMenu {
     background-color: purple;
@@ -47,8 +46,14 @@ body::before {
 .navMenu a:hover {
     color: darkcyan;
 }
+.tagesschrift-regular {
+    font-family: "Tagesschrift", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
 .contenido {
     flex: 1;
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centra verticalmente */
@@ -57,6 +62,10 @@ body::before {
     padding: 30px;
     background: rgba(255,255,255,0.50);
     border-radius: 10px;
-    font-family: Arial, sans-serif;
+    font-family: Tagesschrift;
     position: relative; /* Asegura que esté sobre el fondo */
+}
+
+.contenido img {
+    height: 600px;
 }
