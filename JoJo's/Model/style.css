@@ -20,7 +20,7 @@ body::before {
 
 /* Menú (sin cambios) */
 .navMenu {
-    background-color: purple;
+    background-color: floralwhite;
     position: fixed;
     width: 100%;
     top: 0;
@@ -34,29 +34,48 @@ body::before {
     justify-content: center;
 }
 .navMenu li {
-    padding: 10px 50px;
+    padding: 10px 70px;
 }
 /*edicion de los links*/
 .navMenu a {
-    color: cyan;
+    color: deeppink;
     text-decoration: none;
-    font-family: Arial, sans-serif;
+    font-family: "Bebas Neue", sans-serif;
     font-size: 20px;
 }
 /*cambiar el color del link cuando se pone el ratón por encima*/
 .navMenu a:hover {
-    color: darkcyan;
+    color: lightpink;
 }
 .contenido {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra verticalmente */
+    justify-content: space-around; /* Centra verticalmente */
     align-items: center; /* Centra horizontalmente */
     text-align: center;
+    margin-top: 50px;
     padding: 30px;
     background: rgba(255,255,255,0.50);
     border-radius: 10px;
-    font-family: Arial, sans-serif;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: large;
     position: relative; /* Asegura que esté sobre el fondo */
+}/*espacio entre p*/
+.p{
+    padding: 10px;
+}
+/*logo para el contenido*/
+.logo{
+    width: 30%;
+}
+/*kirbi jotaro*/
+.gift1{
+    width: 15%;
+}
+/*font*/
+.bebas-neue-regular {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }

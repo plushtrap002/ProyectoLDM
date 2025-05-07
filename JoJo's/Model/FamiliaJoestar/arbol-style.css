@@ -62,10 +62,10 @@ body::before {
     padding: 30px;
     background: rgba(255,255,255,0.50);
     border-radius: 10px;
-    font-family: Tagesschrift;
     position: relative; /* Asegura que esté sobre el fondo */
 }
 
 .contenido img {
     height: 600px;
+    border: floralwhite;
 }
