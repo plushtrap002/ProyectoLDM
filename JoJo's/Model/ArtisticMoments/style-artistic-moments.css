@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* Organiza el menú arriba y el contenido abajo */
+    position: relative; /* Necesario para el pseudo-elemento ::before */
+}
+
+/* Fondo difuminado */
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Manda el fondo detrás de todo */
+}
+
+/* Menú (sin cambios) */
+.navMenu {
+    background-color: floralwhite;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+/*Edicion de la enumeracion del menu*/
+.navMenu ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+.navMenu li {
+    padding: 10px 70px;
+}
+/*edicion de los links*/
+.navMenu a {
+    color: deeppink;
+    text-decoration: none;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+}
+/*cambiar el color del link cuando se pone el ratón por encima*/
+.navMenu a:hover {
+    color: lightpink;
+}
+.contenido {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    text-align: center;
+    margin-top: 50px;
+    padding: 30px;
+    background: rgba(255,255,255,0.50);
+    border-radius: 10px;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: large;
+    position: relative; /* Asegura que esté sobre el fondo */
+}/*espacio entre p*/
+.p{
+    padding: 10px;
+}
+/*logo para el contenido*/
+.logo{
+    width: 30%;
+}
+/*kirbi jotaro*/
+.gift1{
+    width: 15%;
+}
+/*font*/
+.bebas-neue-regular {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}

@@ -92,6 +92,11 @@ body::before {
 
 .seleccionada {
     background-color: #4caf50;
+    background-image: url('../JoJos Icono.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
     color: white;
     font-weight: bold;
 }

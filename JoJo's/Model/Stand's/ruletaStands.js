@@ -1,83 +1,116 @@
+//Fuente: mis bolas (chat gepeto)
 const opciones = ["Premio 1", "Premio 2", "Nada", "Otra vez", "Premio 3", "Sorpresa"];
+const repeticiones = 15; // Muchas repeticiones para evitar llegar al final
+const opcionAncho = 120;
+const opcionesVisibles = 4;
+
 const ruletaDiv = document.getElementById('ruleta');
 const carrusel = document.createElement('div');
 carrusel.style.display = 'flex';
-carrusel.style.transition = 'transform 0.3s ease';
+carrusel.style.transition = 'transform 0.1s ease'; // Más lenta por paso
 ruletaDiv.appendChild(carrusel);
 
-const opcionAncho = 120; // Ancho de cada opción
-const opcionesVisibles = 4; // Número de opciones visibles
-
-// Div para mostrar el mensaje de resultado
 const mensajeResultado = document.createElement('div');
-mensajeResultado.id = 'mensajeResultado'; // Agregamos un ID para el estilo
+mensajeResultado.id = 'mensajeResultado';
 document.querySelector('.contenido').appendChild(mensajeResultado);
+
+let opcionesExtendidas = [];
 
 function mostrarOpciones() {
     carrusel.innerHTML = '';
-    const opcionesExtendidas = [...opciones, ...opciones, ...opciones]; // Opciones extendidas para permitir desplazamiento infinito
+    opcionesExtendidas = Array(repeticiones).fill(opciones).flat();
+
     opcionesExtendidas.forEach(op => {
         const div = document.createElement('div');
         div.classList.add('opcion');
         div.textContent = op;
         carrusel.appendChild(div);
     });
+
+    // Centrar en medio
+    posicionActual = Math.floor(opciones.length * repeticiones / 2);
+    const offset = -posicionActual * opcionAncho;
+    carrusel.style.transition = 'none';
+    carrusel.style.transform = `translateX(${offset}px)`;
+
+    // Restaurar transición
+    setTimeout(() => {
+        carrusel.style.transition = 'transform 0.1s ease';
+    }, 50);
 }
+
+let posicionActual = 0;
 
 function girarRuleta() {
-    const totalOpciones = opciones.length * 3;
-    let posicionActual = opciones.length;
-    let pasos = Math.floor(Math.random() * 15) + 15;  // Número aleatorio de pasos
-    let contador = 0;
+    // Limpiar opción ganadora anterior
+    carrusel.querySelectorAll('.opcion').forEach(op => op.classList.remove('seleccionada'));
+    mensajeResultado.textContent = '';
 
-    const intervalo = setInterval(() => {
-        contador++;
-        posicionActual++;
+    // Reiniciar al centro
+    posicionActual = Math.floor(opciones.length * repeticiones / 2);
+    carrusel.style.transition = 'none';
+    const offsetReset = -posicionActual * opcionAncho;
+    carrusel.style.transform = `translateX(${offsetReset}px)`;
 
-        if (posicionActual >= totalOpciones - opcionesVisibles) {
-            posicionActual = opciones.length;
-        }
+    setTimeout(() => {
+        carrusel.style.transition = 'transform 0.1s ease';
 
-        const offset = -posicionActual * opcionAncho;
-        carrusel.style.transform = `translateX(${offset}px)`;  // Movemos el carrusel
+        const pasos = Math.floor(Math.random() * 15) + 15;
+        let contador = 0;
 
-        if (contador >= pasos) {
-            clearInterval(intervalo);
+        const intervalo = setInterval(() => {
+            contador++;
+            posicionActual++;
 
-            setTimeout(() => {
-                // Calcular el centro visible
-                const centroVisualX = ruletaDiv.offsetWidth / 2;
-                const opcionesDOM = carrusel.querySelectorAll('.opcion');
-                let seleccionada = null;
+            if (posicionActual >= opcionesExtendidas.length - opcionesVisibles) {
+                // Nunca debe llegar al final
+                posicionActual = Math.floor(opciones.length * repeticiones / 2);
+            }
 
-                // Buscar la opción que está más cerca del centro
-                opcionesDOM.forEach(opcion => {
-                    const rect = opcion.getBoundingClientRect();
-                    const centerX = rect.left + rect.width / 2;
+            const offset = -posicionActual * opcionAncho;
+            carrusel.style.transform = `translateX(${offset}px)`;
 
-                    // Depuración: mostramos las posiciones calculadas para verificar
-                    console.log(`Opción: ${opcion.textContent}, Posición X: ${rect.left}, Center X: ${centerX}`);
+            if (contador >= pasos) {
+                clearInterval(intervalo);
 
-                    // Limpiar la clase de la opción antes de aplicar la nueva
-                    opcion.classList.remove('seleccionada');
+                setTimeout(() => {
+                    const opcionesDOM = carrusel.querySelectorAll('.opcion');
 
-                    // Verificamos cuál opción está más cerca del centro visual
-                    if (Math.abs(centerX - centroVisualX) < opcionAncho / 2) {
-                        seleccionada = opcion;
+                    // Encuentra el centro visual
+                    const centroVisualX = ruletaDiv.offsetLeft + ruletaDiv.offsetWidth / 2;
+
+                    let seleccionada = null;
+                    let distanciaMinima = Infinity;
+
+                    // Buscamos la opción más cercana al centro
+                    opcionesDOM.forEach(opcion => {
+                        const rect = opcion.getBoundingClientRect();
+                        const centerX = rect.left + rect.width / 2;
+
+                        // Calculamos la distancia entre el centro visual y el centro de la opción
+                        const distancia = Math.abs(centerX - centroVisualX);
+
+                        // Si la distancia es más pequeña que la mínima registrada, seleccionamos esta opción
+                        if (distancia < distanciaMinima) {
+                            distanciaMinima = distancia;
+                            seleccionada = opcion;
+                        }
+                    });
+
+                    // Si encontramos una opción cerca del centro, la seleccionamos
+                    if (seleccionada) {
+                        seleccionada.classList.add('seleccionada');
+                        mensajeResultado.textContent = `¡Has ganado: ${seleccionada.textContent}!`;
+                    } else {
+                        console.warn("No se encontró la opción ganadora.");
                     }
-                });
+                }, 200);  // Tiempo de espera después de terminar el giro
+                // Tiempo de espera después de terminar el giro
 
-                if (seleccionada) {
-                    seleccionada.classList.add('seleccionada');
-                    mensajeResultado.textContent = `¡Has ganado: ${seleccionada.textContent}!`;
-                    console.log(`Seleccionada: ${seleccionada.textContent}`);
-                } else {
-                    console.log("No se seleccionó ninguna opción correctamente");
-                }
-            }, 100);  // Tiempo de espera para asegurar que el desplazamiento termine antes de calcular el centro
-        }
-    }, 100);
+            }
+        }, 50); // Velocidad por paso (más lento = número más alto)
+    }, 20);
 }
 
-document.getElementById('botonRuleta').addEventListener('click',girarRuleta);
+document.getElementById('botonRuleta').addEventListener('click', girarRuleta);
 mostrarOpciones();
