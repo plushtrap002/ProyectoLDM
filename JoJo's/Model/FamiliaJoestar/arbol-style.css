@@ -19,7 +19,7 @@ body::before {
 
 /* Menú (sin cambios) */
 .navMenu {
-    background-color: floralwhite;
+    background-color: lightskyblue;
     position: fixed;
     width: 100%;
     top: 0;
@@ -37,7 +37,7 @@ body::before {
 }
 /*edicion de los links*/
 .navMenu a {
-    color: deeppink;
+    color: rebeccapurple;
     text-decoration: none;
     font-family: "Bebas Neue", sans-serif;
     font-size: 20px;

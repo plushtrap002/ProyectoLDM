@@ -18,7 +18,7 @@ body::before {
 }
 
 .navMenu {
-    background-color: floralwhite;
+    background-color: limegreen;
     position: fixed;
     width: 100%;
     top: 0;
@@ -34,7 +34,7 @@ body::before {
     padding: 10px 70px;
 }
 .navMenu a {
-    color: deeppink;
+    color: red;
     text-decoration: none;
     font-family: "Bebas Neue", sans-serif;
     font-size: 20px;
