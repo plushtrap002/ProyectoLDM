@@ -11,7 +11,7 @@ body::before {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url('../Fondo.jpg');
+    background-image: url('../IMG/Fondo.jpg');
     filter: blur(2px);
     background-size: cover;
     z-index: -1;
@@ -34,7 +34,7 @@ body::before {
     padding: 10px 70px;
 }
 .navMenu a {
-    color: red;
+    color: #ff4a4a;
     text-decoration: none;
     font-family: "Bebas Neue", sans-serif;
     font-size: 20px;
@@ -92,7 +92,7 @@ body::before {
 
 .seleccionada {
     background-color: #4caf50;
-    background-image: url('../JoJos Icono.png');
+    background-image: url('../IMG/JoJos Icono.png');
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
@@ -122,4 +122,25 @@ body::before {
     max-width: 500px; /* Ajustar el ancho máximo */
     margin: 20px auto;
 }
+
+.resultado-imagen {
+    display: block;
+    width: 500px;
+    height: 500px;
+    margin: 20px auto 0 auto;
+}
+
+#contenidoExtra {
+    margin-top: 20px;
+    background-color: #ffffffc0;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: sans-serif;
+    white-space: pre-wrap; /* Para respetar saltos de línea en .txt */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
 

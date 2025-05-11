@@ -4,9 +4,13 @@ body {
     display: flex;
     flex-direction: column; /* Organiza el menú arriba y el contenido abajo */
     position: relative; /* Necesario para el pseudo-elemento ::before */
+    ::-webkit-scrollbar{
+        display: none; /*Para que no haya scrollbars*/
+    }
 }
 
 /* Fondo difuminado */
+
 body::before {
     content: "";
     position: absolute;
@@ -17,6 +21,7 @@ body::before {
 }
 
 /* Menú (sin cambios) */
+
 .navMenu {
     background-color: deepskyblue;
     position: fixed;
@@ -25,7 +30,9 @@ body::before {
     left: 0;
     z-index: 1000;
 }
+
 /*Edicion de la enumeracion del menu*/
+
 .navMenu ul {
     list-style: none;
     display: flex;
@@ -34,14 +41,18 @@ body::before {
 .navMenu li {
     padding: 10px 70px;
 }
+
 /*edicion de los links*/
+
 .navMenu a {
     color: darkorange;
     text-decoration: none;
     font-family: "Bebas Neue", sans-serif;
     font-size: 20px;
 }
+
 /*cambiar el color del link cuando se pone el ratón por encima*/
+
 .navMenu a:hover {
     color: lightpink;
 }
@@ -60,20 +71,50 @@ body::before {
     font-size: large;
     position: relative; /* Asegura que esté sobre el fondo */
 }
+
 /*font*/
+
 .bebas-neue-regular {
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
+
+/*Todo lo relacionado con el carrusel*/
+
 .carrusel{
+    margin-top: 80px;
     display: flex;
     flex-wrap: nowrap;
-    overflow:scroll;
+    overflow: scroll;
 }
-.elemento{
-    flex: 1 0 auto;
+.carrusel-container {
+    width: 100%;
+    height: calc(100vh - 80px);
+    margin-top: 80px;
+    overflow: hidden;
+    position: relative;
+}
+
+.carrusel {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease;
+    will-change: transform; /* Mejora el rendimiento de la animación */
+}
+
+.elemento {
+    flex: 0 0 auto;
     margin: 0 50px;
     width: 750px;
-    height: 750px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.elemento img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
