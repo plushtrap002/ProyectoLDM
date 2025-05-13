@@ -17,7 +17,7 @@ body::before {
     z-index: -1; /* Manda el fondo detrás de todo */
 }
 
-/* Menú (sin cambios) */
+/* Menú */
 .navMenu {
     background-color: lightskyblue;
     position: fixed;
@@ -29,8 +29,8 @@ body::before {
 /*Edicion de la enumeracion del menu*/
 .navMenu ul {
     list-style: none;
-    display: flex;
-    justify-content: center;
+    display: flex; /*Responsive*/
+    justify-content: center; /*Responsive*/
 }
 .navMenu li {
     padding: 10px 70px;
@@ -49,7 +49,7 @@ body::before {
 .contenido {
     flex: 1;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /*Responsive*/
     justify-content: space-around; /* Centra verticalmente */
     align-items: center; /* Centra horizontalmente */
     margin-top: 50px;
@@ -59,5 +59,5 @@ body::before {
     position: relative; /* Asegura que esté sobre el fondo */
 }
 .imagen-arbol-geneologico{
-    width: 100%;
+    width: 100%; /*Responsive*/
 }
