@@ -42,6 +42,7 @@ body::before {
 .navMenu a:hover {
     color: lightpink;
 }
+
 .contenido {
     flex: 1;
     display: flex;
@@ -64,7 +65,7 @@ body::before {
 
 #ruleta {
     display: flex;
-    overflow: hidden;
+    overflow: hidden; /*para que se muestren solo las que están dentro del div visualmente*/
     border: 2px solid #ffffff;
     padding: 10px;
     width: 480px;
@@ -75,17 +76,12 @@ body::before {
 }
 
 
-#carrusel {
-    display: flex;
-    transition: transform 0.3s ease;
-}
-
 .opcion {
     flex: 0 0 120px;
     text-align: center;
     padding: 10px;
     margin: 5px;
-    background-color: #eee;
+    background-color: #ffffff;
     border: 1px solid #aaa;
     border-radius: 5px;
 }
@@ -109,7 +105,6 @@ body::before {
 }
 
 #mensajeResultado {
-    margin-top: 20px;
     font-size: 24px;
     font-weight: bold;
     color: #4caf50;
